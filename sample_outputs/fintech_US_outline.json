@@ -1,0 +1,188 @@
+{
+  "domain": "fintech",
+  "deck_title": "Accelerator-Ready Fintech Pitch: [Founder to fill: company name & tagline]",
+  "narrative_arc": "We target a single, narrow fintech subsegment and solve acute pilot-to-production friction by combining an API-first product with program-bank relationships and explainable ML for risk/compliance. The plan uses accelerator cohorts and targeted non-dilutive funding to secure pilots, build compliance as a moat, and prove unit economics before scaling with sector-specialist seed capital.",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Title",
+      "purpose": "Introduce the company, one-line value proposition, and the immediate ask (raise or program application).",
+      "key_points": [
+        "[Founder to fill: company name]",
+        "[Founder to fill: one-line tagline/value prop]",
+        "[Founder to fill: immediate ask (e.g., accelerator slot, desired raise amount or pilot request)]"
+      ],
+      "data_source": "founder",
+      "evidence_used": "none",
+      "visual_suggestion": "Clean hero with logo placeholder, one-line value prop, and a single-line ask beneath.",
+      "speaker_note": "Quickly state who you are, what you build in one sentence, and the concrete action you want from the audience."
+    },
+    {
+      "number": 2,
+      "title": "Problem",
+      "purpose": "Make investors feel the urgency by showing how regulatory pressure, competition and lack of bank partnerships block early fintech scale.",
+      "key_points": [
+        "Regulatory intensification is increasing time-to-market and operating costs (Regulatory Intensification and Compliance Cost Rise).",
+        "Large incumbents and well-capitalized fintechs compress margins and make distribution and pricing harder (Intense competition and margin compression).",
+        "Startups without program-bank partnerships or documented BSA/AML/PCI posture struggle to convert pilots into production."
+      ],
+      "data_source": "research",
+      "evidence_used": "Regulatory Intensification and Compliance Cost Rise; risks: Intense competition and margin compression; Embedded Finance & Platform Partnerships",
+      "visual_suggestion": "Three-icon lineup: regulatory burden, margin pressure, pilot-to-production friction with succinct captions.",
+      "speaker_note": "Frame the problem as structural: regulatory scrutiny and incumbent economics create a gap for startups that can operationalize compliance and secure bank partnerships early."
+    },
+    {
+      "number": 3,
+      "title": "Solution",
+      "purpose": "Explain how the product reduces pilot friction, manages compliance risk, and leverages platform distribution \u2014 at a high level.",
+      "key_points": [
+        "[Founder to fill: concise solution statement \u2014 what you build and for whom]",
+        "API-first, embeddable architecture designed for platform and vertical SaaS distribution (aligns with Composability & API-first Infrastructure).",
+        "Built-in compliance and explainable ML for underwriting/fraud to shorten bank onboarding and address model governance/fair-lending concerns (AI-driven Underwriting, Fraud and Personalization)."
+      ],
+      "data_source": "mixed",
+      "evidence_used": "Composability & API-first Infrastructure; AI-driven Underwriting, Fraud and Personalization; Embedded Finance & Platform Partnerships",
+      "visual_suggestion": "Layered diagram: core product -> API layer -> compliance/ML layer -> program-bank & platform integrations.",
+      "speaker_note": "State the product in one sentence, then connect features (APIs, explainable ML, compliance hooks) to how they lower pilot friction and unit costs."
+    },
+    {
+      "number": 4,
+      "title": "Market Opportunity",
+      "purpose": "Show where you play, the illustrative market context, and commit to a single subsegment for GTM clarity.",
+      "key_points": [
+        "US fintech illustrative total revenue opportunity: ~USD 150-250 billion across major verticals (research estimate).",
+        "Choose and state a single subsegment to focus (Payments & Embedded Finance; Digital Lending & Consumer Credit; Wealthtech & Robo-Advisory; or Digital Assets & Crypto Infrastructure).",
+        "Illustrative subsegment estimates from research: Payments & Embedded Finance (tens of billions to over USD 100 billion); Digital Assets (tens of billions); Wealthtech (several tens of billions); Digital Lending (tens of billions in originations/fees)."
+      ],
+      "data_source": "research",
+      "evidence_used": "market_overview size estimate; subsegments: Payments & Embedded Finance; Digital Lending & Consumer Credit; Wealthtech & Robo-Advisory; Digital Assets & Crypto Infrastructure",
+      "visual_suggestion": "Segmented chart showing the USD 150-250B illustrative total with callouts for each subsegment's illustrative estimate.",
+      "speaker_note": "Declare which subsegment you will pursue (founder to fill) and use the illustrative sizing to justify market significance and growth posture."
+    },
+    {
+      "number": 5,
+      "title": "Product",
+      "purpose": "Convey product scope, architecture, and the elements that reduce bank/program onboarding friction.",
+      "key_points": [
+        "[Founder to fill: product description \u2014 core features, APIs, and integration points]",
+        "API-first modular design to enable embedded finance use-cases (aligns with Composability & API-first Infrastructure).",
+        "Compliance building blocks planned or implemented: KYC/KYB, BSA/AML workflows, PCI considerations, and explainable ML/model governance to ease program-bank reviews."
+      ],
+      "data_source": "founder",
+      "evidence_used": "Composability & API-first Infrastructure; Regulatory notes: KYC/AML, PCI-DSS",
+      "visual_suggestion": "System architecture mock: frontend, API layer, compliance & ML modules, and program-bank interface.",
+      "speaker_note": "Be explicit which modules are built vs. planned and how the architecture accelerates bank/program acceptance and pilot execution."
+    },
+    {
+      "number": 6,
+      "title": "Business Model",
+      "purpose": "Explain revenue streams, unit economics levers, and how productized compliance improves margins.",
+      "key_points": [
+        "Primary revenue levers to consider: transaction take-rates/processing fees, platform/SaaS fees for compliance/risk tooling, and integration/professional services.",
+        "[Founder to fill: specific pricing, take-rate targets or pilot commercial terms]",
+        "Productizing compliance and model governance can create higher-margin enterprise SaaS revenue and a defensible commercial motion."
+      ],
+      "data_source": "mixed",
+      "evidence_used": "opportunities: embed financial services into vertical SaaS; productize compliance and risk tooling",
+      "visual_suggestion": "Revenue stack visualization showing transaction fees, subscription fees, and services without specific dollar figures.",
+      "speaker_note": "Explain high-level unit economics drivers and where scale will improve margins (e.g., platform fees, SaaS margins) \u2014 founder to fill exact targets."
+    },
+    {
+      "number": 7,
+      "title": "Go-to-Market",
+      "purpose": "Present a credible path to pilots and scale via accelerators, competitions, bank program partners and platform integrations.",
+      "key_points": [
+        "Primary channel: Embedded Finance & Platform Partnerships to lower CAC and drive distribution (Embedded Finance & Platform Partnerships trend).",
+        "Early tactical plays: apply to Plug and Play FinTech and Techstars FinTech/bank cohorts; pursue Visa Everywhere Initiative, Mastercard Start Path, and Fintech Innovation Lab for pilot/commercial introductions.",
+        "Secure a program-bank or payments-network pilot early (examples to pursue include regional program banks and bank-sponsored cohorts \u2014 founder to fill preferred targets and LOIs)."
+      ],
+      "data_source": "funding",
+      "evidence_used": "Funding recommendations: Plug and Play FinTech, Techstars FinTech (bank cohorts); Visa Everywhere Initiative; Mastercard Start Path; Fintech Innovation Lab; trend: Embedded Finance & Platform Partnerships",
+      "visual_suggestion": "Funnel: accelerators/competitions -> program-bank pilot -> platform integrations -> commercial rollouts.",
+      "speaker_note": "Outline sequence: accelerator/competition acceptance -> program-bank pilot -> platform integrations for scale; founder should name target banks/program partners and LOI status."
+    },
+    {
+      "number": 8,
+      "title": "Competition",
+      "purpose": "Map relevant incumbents and API-first competitors, and state your founder-provided differentiators versus each.",
+      "key_points": [
+        "Benchmark competitors: Stripe (API-first payments & embedded finance), PayPal / Venmo (consumer payments & wallet), Block (Square) (SMB payments/banking), Plaid (account connectivity APIs).",
+        "[Founder to fill: direct competitors in chosen subsegment and 1-2 specific differentiators versus each named competitor].",
+        "Competitive risk: pricing and distribution pressure from incumbents; compliance depth and program-bank relationships are credible defensible levers."
+      ],
+      "data_source": "research",
+      "evidence_used": "competitors: Stripe; PayPal / Venmo; Block (Square); Plaid; risks: Intense competition and margin compression",
+      "visual_suggestion": "Competitive quadrant or feature comparison table with named incumbents and founder-supplied differentiators.",
+      "speaker_note": "Be candid about where incumbents are stronger and where you have a clear advantage \u2014 founder must supply direct competitor list and differentiation."
+    },
+    {
+      "number": 9,
+      "title": "Team",
+      "purpose": "Demonstrate relevant founding and hire credentials for product, compliance, and bank-ops to shorten pilot and regulatory timelines.",
+      "key_points": [
+        "[Founder to fill: founder bios and relevant experience (banking/payments/compliance/ML/startups)].",
+        "[Founder to fill: hires planned for regulatory/compliance, bank-ops, and engineering with target timelines].",
+        "Advisors or early hires with program-bank or compliance backgrounds materially improve accelerator and VC reception."
+      ],
+      "data_source": "founder",
+      "evidence_used": "none",
+      "visual_suggestion": "Founders' headshots (or placeholders) with 2-line bios and bullets for immediate hires and advisors.",
+      "speaker_note": "Name the team and specific bank/program/compliance experience that shortens pilot cycles; list immediate hiring priorities."
+    },
+    {
+      "number": 10,
+      "title": "Financial Ask & Use of Funds",
+      "purpose": "State the target raise or program requests and tie use of funds to compliance, pilots and GTM milestones investors expect.",
+      "key_points": [
+        "[Founder to fill: target raise amount or accelerator/program applications desired \u2014 and instrument preference (SAFE/equity/debt)].",
+        "Recommended funding path for accelerator-stage: apply to Plug and Play FinTech, Techstars FinTech/bank cohorts, pursue Visa Everywhere Initiative/Mastercard Start Path pilots, and seek fintech angels before sector-specialist seed VCs (Funding Advisor guidance).",
+        "High-level use categories: product & compliance engineering (KYC/AML, PCI effort), pilot implementation & integration, go-to-market (partner pilots), and key hires (bank-ops/compliance). Avoid venture debt until revenue predictability (Funding Advisor guidance)."
+      ],
+      "data_source": "funding",
+      "evidence_used": "Funding recommendations: Plug and Play FinTech; Techstars FinTech; Visa Everywhere Initiative; Mastercard Start Path; SBIR/STTR; angels; seed-stage fintech VCs; revenue-based financing guidance",
+      "visual_suggestion": "Donut chart of use-of-funds categories (percentages left empty for founder to populate).",
+      "speaker_note": "After you provide the raise amount, show a simple allocation tied to near-term regulatory and pilot milestones; explain why debt should be considered only after predictable revenue."
+    },
+    {
+      "number": 11,
+      "title": "Roadmap & Key Milestones (9-18 months)",
+      "purpose": "Present concrete near-term milestones that de-risk the company for accelerators, pilots and seed investors.",
+      "key_points": [
+        "[Founder to fill: timeline with target dates for MVP completion, pilot start/close, first revenue/TPV inflection, and hires].",
+        "Regulatory/compliance milestones expected by investors: documented BSA/AML program, KYC/KYB controls, PCI readiness if handling card data, and either program-bank partnership or state money-transmitter plan depending on product flow.",
+        "Funding/de-risk milestones: acceptance to an accelerator (Plug and Play FinTech, Techstars FinTech), pilot commitments from Visa/Mastercard programs or bank cohorts, and seed investor closes once pilot results are documented."
+      ],
+      "data_source": "mixed",
+      "evidence_used": "Regulatory notes: BSA/AML, PCI-DSS, KYC/KYB; Funding recommendations: Plug and Play FinTech, Techstars FinTech, Visa Everywhere Initiative, Mastercard Start Path",
+      "visual_suggestion": "Timeline with milestone flags and investor-de-risk annotations (e.g., 'pilot with program bank = credibility + revenue test').",
+      "speaker_note": "Tie each milestone to investor risk reduction: compliance docs -> ability to onboard partners; pilot results -> investor confidence to lead a seed round."
+    },
+    {
+      "number": 12,
+      "title": "Closing & Next Steps",
+      "purpose": "End with a concise ask and clear next steps for investors, accelerators or pilot partners.",
+      "key_points": [
+        "[Founder to fill: restated ask \u2014 raise amount, accelerator/program applications, or specific pilot requests and timeline].",
+        "Immediate asks for the audience: introductions to platform partners or program-bank contacts, and encouragement to support accelerator/competition applications (Plug and Play FinTech, Techstars FinTech, Visa Everywhere Initiative, Mastercard Start Path).",
+        "[Founder to fill: contact information and availability for follow-up meetings or pilot demos]"
+      ],
+      "data_source": "founder",
+      "evidence_used": "Funding recommendations: Plug and Play FinTech; Techstars FinTech; Visa Everywhere Initiative; Mastercard Start Path",
+      "visual_suggestion": "Simple thank-you slide with three next-step bullets and a contact placeholder.",
+      "speaker_note": "Close with one clear ask and the exact next action you want in the coming 7-14 days (founder to specify)."
+    }
+  ],
+  "founder_todo": [
+    "[Founder to fill: chosen subsegment (Payments & Embedded Finance | Digital Lending & Consumer Credit | Wealthtech & Robo-Advisory | Digital Assets & Crypto Infrastructure)",
+    "[Founder to fill: company name and one-line tagline/value proposition]",
+    "[Founder to fill: short product description (core features, APIs, integration points) and which modules are built vs planned]",
+    "[Founder to fill: specific pricing/take-rate targets or pilot commercial terms]",
+    "[Founder to fill: target raise amount or accelerator/program applications you intend to pursue and instrument preference (SAFE/equity/debt)]",
+    "[Founder to fill: traction metrics to date (MVP status, pilots, LOIs, users, revenue, TPV or MRR) with dates]",
+    "[Founder to fill: founder bios and immediate hiring priorities, plus any advisors with bank/compliance experience]",
+    "[Founder to fill: list of target program-bank or payments-network partners you will approach and current LOI/pilot status (if any)]",
+    "[Founder to fill: timeline with target dates for MVP, pilot start/close, revenue inflection, and regulatory milestones (BSA/AML program, PCI readiness, state licensing if applicable)]"
+  ],
+  "feedback_for_peers": [],
+  "ready": true
+}

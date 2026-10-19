@@ -1,0 +1,669 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Run 8832cb7c</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--card:#f6f7f9;--line:#dcdfe4}
+@media (prefers-color-scheme: dark){:root{--bg:#16181c;--fg:#e8e8e8;--muted:#9aa0a6;--card:#1f2228;--line:#34383f}}
+body{font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);max-width:980px;margin:2rem auto;padding:0 1rem}
+h1{font-size:1.5rem;margin:0 0 .2rem}
+h2{font-size:1.15rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.3rem}
+.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:.6rem 0}
+.chip{padding:.15rem .65rem;border-radius:999px;color:#fff;font-weight:600;font-size:.85rem}
+.arrow{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem}
+.stat{background:var(--card);border-radius:8px;padding:.6rem .8rem}
+.stat b{display:block;font-size:1.3rem}
+.card{background:var(--card);border-left:5px solid var(--c);border-radius:6px;padding:.7rem 1rem;margin:.6rem 0}
+.card h3{margin:0 0 .3rem;font-size:1rem}
+.card ul{margin:.3rem 0;padding-left:1.2rem}
+.decision{margin:.4rem 0 .4rem 1rem;padding:.25rem .7rem;border:1px dashed var(--line);border-radius:6px;color:var(--muted);font-size:.9rem}
+table{border-collapse:collapse;width:100%;font-size:.88rem;margin:.4rem 0}
+th,td{border-bottom:1px solid var(--line);padding:.3rem .5rem;text-align:left;vertical-align:top}
+.used{color:#059669;font-weight:600}
+.skip{color:var(--muted)}
+details{margin:.3rem 0}
+summary{cursor:pointer;color:var(--muted)}
+pre{white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:.5rem;font-size:.8rem;max-height:320px;overflow:auto}
+</style></head><body>
+<h1>Multi-agent run report</h1>
+<div class="muted">Run 8832cb7c · domain: fintech · region: US · log: logs/run_8832cb7c.jsonl</div>
+<div class="stats" style="margin-top:1rem"><div class="stat"><b>276s</b>wall time</div><div class="stat"><b>8</b>agent runs</div><div class="stat"><b>8</b>model calls</div><div class="stat"><b>0s</b>model time</div><div class="stat"><b>2</b>feedback rounds</div></div>
+<h2>Flow</h2>
+<div class="chips"><span class="chip" style="background:#2563eb">R</span><span class="arrow">→</span><span class="chip" style="background:#059669">F</span><span class="arrow">→</span><span class="chip" style="background:#2563eb">R<sub>1</sub></span><span class="arrow">→</span><span class="chip" style="background:#059669">F<sub>1</sub></span><span class="arrow">→</span><span class="chip" style="background:#d97706">C<sub>1</sub></span><span class="arrow">→</span><span class="chip" style="background:#2563eb">R<sub>2</sub></span><span class="arrow">→</span><span class="chip" style="background:#059669">F<sub>2</sub></span><span class="arrow">→</span><span class="chip" style="background:#d97706">C<sub>2</sub></span></div>
+<div class="muted">R = Research Agent, F = Funding Advisor, C = Pitch Coach. A subscript is the revision round.</div>
+<h2>Step by step</h2><div class="card" style="--c:#2563eb"><h3>1. Research Agent <span class="muted">(38s)</span></h3><ul><li>Researched &#x27;fintech&#x27; for region &#x27;US&#x27;.</li><li>Memory recall: 0 of 0 past notes were used.</li><li>Produced: trends=5</li><li>Stored 16 notes in memory.</li><li>Handed off to funding_advisor: 5 trends, 3 opportunities</li></ul><details><summary>Prompt sent to the model</summary><pre>Research the startup domain: fintech
+Region: US
+
+Return ONLY valid JSON with exactly this structure:
+{
+  &quot;domain&quot;: &quot;string&quot;,
+  &quot;summary&quot;: &quot;2-3 sentence overview of the domain today&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approximate figure for the stated region, labelled as an estimate, with its geographic scope stated&quot;,
+    &quot;growth_outlook&quot;: &quot;string&quot;
+  },
+  &quot;subsegments&quot;: [
+      {
+        &quot;name&quot;: &quot;e.g. payments, digital lending, wealthtech&quot;,
+        &quot;size_estimate&quot;: &quot;approximate, labelled as an estimate&quot;,
+        &quot;growth_outlook&quot;: &quot;string&quot;,
+        &quot;regulatory_notes&quot;: &quot;key licences or rules in the stated region&quot;
+      }
+  ],
+  &quot;trends&quot;: [
+    {&quot;name&quot;: &quot;string&quot;, &quot;description&quot;: &quot;string&quot;, &quot;why_it_matters&quot;: &quot;string&quot;}
+  ],
+  &quot;target_customers&quot;: [&quot;string&quot;],
+  &quot;competitors&quot;: [
+    {&quot;name&quot;: &quot;string&quot;, &quot;positioning&quot;: &quot;string&quot;}
+  ],
+  &quot;opportunities&quot;: [&quot;string&quot;],
+  &quot;risks&quot;: [&quot;string&quot;],
+  &quot;regulatory_notes&quot;: [&quot;string&quot;]
+}
+Provide 4-5 trends, 3-4 subsegments, 3-4 competitors (prioritise players active in the stated region), and 3 items for each remaining list.
+</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector combines payments, lending, investing, infrastructure and crypto services and remains a major engine of innovation in financial services. Growth is driven by embedded finance, API-first platforms and AI, but expansion is balanced by rising regulatory scrutiny and competition from incumbents and big tech.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, wealthtech, crypto and infrastructure)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), driven by payments, embedded finance and AI adoption; near-term variability due to interest rates, macro conditions and regulation.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing and related services revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;Stable growth as card and digital payments expand, with margin pressure from pricing competition and shift to integrated commerce solutions.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Requires compliance with state money transmitter laws in many cases, PCI-DSS for card data, NACHA rules for ACH, and BSA/AML obligations; some services may trigger state licensing.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States origination and servicing revenue for tech-enabled lending)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical growth tied to interest rates and credit cycles; innovation in underwriting (alternative data, AI) can unlock new segments but credit risk remains central.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to TILA, ECOA/Regulation B (fair lending), CFPB oversight, state lending and licensing regimes, and BSA/AML when lenders handle funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Wealthtech &amp; Retail Investing&quot;,
+      &quot;size_estimate&quot;: &quot;approx $40 billion (estimate, United States robo-advisors, trading platforms, and wealth management tech revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;Gradual growth as retail adoption of digital advice and fractional investing continues; fee compression and regulatory compliance are key constraints.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Advisory and brokerage services fall under SEC and FINRA rules; registered investment adviser (RIA) obligations, custody rules, and suitability/know-your-customer (KYC) apply.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Crypto &amp; Digital Asset Infrastructure&quot;,
+      &quot;size_estimate&quot;: &quot;approx $30 billion (estimate, United States crypto exchanges, custody and infrastructure revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;High long-term potential but volatile near-term; growth depends on regulatory clarity, institutional adoption and custody/legal frameworks.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Regulatory jurisdiction is fragmented: SEC/FINRA oversight for tokenized securities, CFTC for some derivatives, state crypto licenses (e.g., NY BitLicense) and FinCEN AML/MSB requirements.&quot;
+    }
+  ],
+  &quot;trends&quot;: [
+    {
+      &quot;name&quot;: &quot;Embedded finance&quot;,
+      &quot;description&quot;: &quot;Non-financial platforms embed payments, banking, lending or insurance directly into their user experience via APIs and partner banks.&quot;,
+      &quot;why_it_matters&quot;: &quot;Expands distribution beyond traditional channels, lowers customer acquisition costs for financial services and creates new revenue streams for platforms and fintechs.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Open banking &amp; data connectivity&quot;,
+      &quot;description&quot;: &quot;APIs and aggregators enable secure sharing of financial data between institutions and third parties, improving onboarding, underwriting and account-linked services.&quot;,
+      &quot;why_it_matters&quot;: &quot;Accelerates product innovation (like instant account verification and personalized offers) and increases competition, but raises data security and consent management requirements.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;AI/ML for underwriting, fraud an…</pre></details></div><div class="card" style="--c:#059669"><h3>2. Funding Advisor <span class="muted">(27s)</span></h3><ul><li>Read the research (10 sections) for region &#x27;US&#x27;.</li><li>Memory recall: 0 of 0 past notes were used.</li><li>Produced: recommendations=6, types=[&#x27;accelerator&#x27;, &#x27;angel&#x27;, &#x27;competition&#x27;, &#x27;debt&#x27;, &#x27;government_program&#x27;, &#x27;venture_capital&#x27;], requests_to_research=6</li><li>Stored 6 notes in memory.</li><li>Handed off to pitch_coach: 6 funding options</li></ul><details><summary>Prompt sent to the model</summary><pre>Domain: fintech
+Region: US
+
+Research from the Research Agent:
+{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector combines payments, lending, investing, infrastructure and crypto services and remains a major engine of innovation in financial services. Growth is driven by embedded finance, API-first platforms and AI, but expansion is balanced by rising regulatory scrutiny and competition from incumbents and big tech.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, wealthtech, crypto and infrastructure)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), driven by payments, embedded finance and AI adoption; near-term variability due to interest rates, macro conditions and regulation.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing and related services revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;Stable growth as card and digital payments expand, with margin pressure from pricing competition and shift to integrated commerce solutions.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Requires compliance with state money transmitter laws in many cases, PCI-DSS for card data, NACHA rules for ACH, and BSA/AML obligations; some services may trigger state licensing.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States origination and servicing revenue for tech-enabled lending)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical growth tied to interest rates and credit cycles; innovation in underwriting (alternative data, AI) can unlock new segments but credit risk remains central.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to TILA, ECOA/Regulation B (fair lending), CFPB oversight, state lending and licensing regimes, and BSA/AML when lenders handle funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Wealthtech &amp; Retail Investing&quot;,
+      &quot;size_estimate&quot;: &quot;approx $40 billion (estimate, United States robo-advisors, trading platforms, and wealth management tech revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;Gradual growth as retail adoption of digital advice and fractional investing continues; fee compression and regulatory compliance are key constraints.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Advisory and brokerage services fall under SEC and FINRA rules; registered investment adviser (RIA) obligations, custody rules, and suitability/know-your-customer (KYC) apply.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Crypto &amp; Digital Asset Infrastructure&quot;,
+      &quot;size_estimate&quot;: &quot;approx $30 billion (estimate, United States crypto exchanges, custody and infrastructure revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;High long-term potential but volatile near-term; growth depends on regulatory clarity, institutional adoption and custody/legal frameworks.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Regulatory jurisdiction is fragmented: SEC/FINRA oversight for tokenized securities, CFTC for some derivatives, state crypto licenses (e.g., NY BitLicense) and FinCEN AML/MSB requirements.&quot;
+    }
+  ],
+  &quot;trends&quot;: [
+    {
+      &quot;name&quot;: &quot;Embedded finance&quot;,
+      &quot;description&quot;: &quot;Non-financial platforms embed payments, banking, lending or insurance directly into their user experience via APIs and partner banks.&quot;,
+      &quot;why_it_matters&quot;: &quot;Expands distribution beyond traditional channels, lowers customer acquisition costs for financial services and creates new revenue streams for platforms and fintechs.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Open banking &amp; data connectivity&quot;,
+      &quot;description&quot;: &quot;APIs and aggregators enable secure sharing of financial data between institutions and third parties, improving onboarding, underwriting and account-linked services.&quot;,
+      &quot;why_it_matters&quot;: &quot;Accelerates product innovation (like instant account verification and personalized offers) and increases competition, but raises data security and consent management requirements.…</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;stage_assumption&quot;: &quot;pre-seed to seed&quot;,
+  &quot;strategy_summary&quot;: &quot;Pursue a blended funding path: start with non-dilutive government grants and fintech accelerators/competitions to de-risk product-market and regulatory fit, then raise angel/seed VC or take small revenue/debt facilities once you have pilots or recurring revenue. Emphasize grants/pilots that validate compliance and bank/merchant partnerships because regulatory scrutiny and the need for trusted infrastructure are major barriers to scaling.&quot;,
+  &quot;recommendations&quot;: [
+    {
+      &quot;name&quot;: &quot;SBIR / STTR federal innovation grants&quot;,
+      &quot;type&quot;: &quot;government_program&quot;,
+      &quot;provider&quot;: &quot;U.S. federal agencies via SBIR/STTR (e.g., NSF, Department of Treasury, DHS) administered through SBA&quot;,
+      &quot;fit_reason&quot;: &quot;Directly supports R&amp;D on AI/ML underwriting, fraud detection, RegTech for AML/compliance, and payments infrastructure — all highlighted as high-opportunity areas in the research where non-dilutive capital can fund technical development while mitigating regulatory risk.&quot;,
+      &quot;typical_range&quot;: &quot;estimate $100K–$1.5M depending on Phase I/II&quot;,
+      &quot;eligibility_notes&quot;: &quot;Must be a US-based, for-profit small business (majority US-owned, &lt;500 employees). Projects must align with agency solicitations and include technical innovation; principal investigator and substantial work often must be US-based.&quot;,
+      &quot;verify&quot;: &quot;Confirm current solicitations and agency fits, exact award sizes/timelines for relevant agencies (NSF, Treasury, etc.), and any citizenship/principal investigator requirements for each agency&quot;
+    },
+    {
+      &quot;name&quot;: &quot;FinTech Innovation Lab or other fintech-specific accelerators&quot;,
+      &quot;type&quot;: &quot;accelerator&quot;,
+      &quot;provider&quot;: &quot;FinTech Innovation Lab (regional chapters) / Plug and Play Fintech / other dedicated fintech accelerators&quot;,
+      &quot;fit_reason&quot;: &quot;Accelerators focused on fintech help secure pilot customers (banks, merchants) and partnerships for embedded finance or BaaS plays — matching the research opportunity to capture distribution via platform partnerships and validating integrations with incumbents.&quot;,
+      &quot;typical_range&quot;: &quot;estimate $20K–$150K in direct funding or pilot credits plus mentorship and pilot introductions&quot;,
+      &quot;eligibility_notes&quot;: &quot;Typically early-stage companies with a working prototype or initial pilots and clear fintech use-case (payments, BaaS, RegTech). Some programs favor enterprise or bank-ready pilots.&quot;,
+      &quot;verify&quot;: &quot;Check current cohort application windows, exact program benefits (capital vs. credits), and whether the accelerator targets your subsegment (payments, lending, crypto, etc.)&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Visa Everywhere Initiative / Mastercard Start Path (payments-focused competitions)&quot;,
+      &quot;type&quot;: &quot;competition&quot;,
+      &quot;provider&quot;: &quot;Visa Everywhere Initiative / Mastercard Start Path (examples of corporate fintech competitions)&quot;,
+      &quot;fit_reason&quot;: &quot;Payments and merchant services startups can win prize money and, importantly, pilot/project opportunities with major networks — useful for traction in payments and merchant services where partnerships reduce CAC and open distribution.&quot;,
+      &quot;typical_range&quot;: &quot;estimate $10K–$200K in prizes and pilot funding (often includes commercial pilot opportunities)&quot;,
+      &quot;eligibility_notes&quot;: &quot;Competitions usually target startups with working products addressing payments, merchant services or commerce enablement; some require you to be able to pilot with a partner quickly.&quot;,
+      &quot;verify&quot;: &quot;Confirm current competition cycles, prize structure, pilot commitments, IP terms, and whether the sponsor will offer commercial trials or only promotional exposure&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Fintech-focused venture capital (seed-stage)&quot;,
+      &quot;type&quot;: &quot;venture_capital&quot;,
+      &quot;provider&quot;: &quot;Fintech VCs / growth investors (examples: QED Investors, Ribbit Capital, a16z fintech teams)&quot;,
+      &quot;fit_reason&quot;: &quot;VCs that specialize in fintech wil…</pre></details></div><div class="decision">↳ funding_advisor requests routed to research_agent</div><div class="card" style="--c:#2563eb"><h3>3. Research Agent · revision round 1 <span class="muted">(21s)</span></h3><ul><li>Researched &#x27;fintech&#x27; for region &#x27;US&#x27;.</li><li>Received feedback from funding_advisor: The Funding Advisor needs more information to recommend well. → asked: Which specific fintech subsegment is the founder targeting (payments, lending, wealthtech, crypto, BaaS)? | Current traction: MRR, number of customers/pilots, and runway…</li><li>Memory recall: 0 of 0 past notes were used.</li><li>Produced: trends=5</li><li>Stored 16 notes in memory.</li><li>Handed off to funding_advisor: 5 trends, 3 opportunities</li></ul><details><summary>Prompt sent to the model</summary><pre>Domain: fintech
+Region: US
+
+Your previous research:
+{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector combines payments, lending, investing, infrastructure and crypto services and remains a major engine of innovation in financial services. Growth is driven by embedded finance, API-first platforms and AI, but expansion is balanced by rising regulatory scrutiny and competition from incumbents and big tech.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, wealthtech, crypto and infrastructure)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), driven by payments, embedded finance and AI adoption; near-term variability due to interest rates, macro conditions and regulation.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing and related services revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;Stable growth as card and digital payments expand, with margin pressure from pricing competition and shift to integrated commerce solutions.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Requires compliance with state money transmitter laws in many cases, PCI-DSS for card data, NACHA rules for ACH, and BSA/AML obligations; some services may trigger state licensing.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States origination and servicing revenue for tech-enabled lending)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical growth tied to interest rates and credit cycles; innovation in underwriting (alternative data, AI) can unlock new segments but credit risk remains central.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to TILA, ECOA/Regulation B (fair lending), CFPB oversight, state lending and licensing regimes, and BSA/AML when lenders handle funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Wealthtech &amp; Retail Investing&quot;,
+      &quot;size_estimate&quot;: &quot;approx $40 billion (estimate, United States robo-advisors, trading platforms, and wealth management tech revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;Gradual growth as retail adoption of digital advice and fractional investing continues; fee compression and regulatory compliance are key constraints.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Advisory and brokerage services fall under SEC and FINRA rules; registered investment adviser (RIA) obligations, custody rules, and suitability/know-your-customer (KYC) apply.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Crypto &amp; Digital Asset Infrastructure&quot;,
+      &quot;size_estimate&quot;: &quot;approx $30 billion (estimate, United States crypto exchanges, custody and infrastructure revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;High long-term potential but volatile near-term; growth depends on regulatory clarity, institutional adoption and custody/legal frameworks.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Regulatory jurisdiction is fragmented: SEC/FINRA oversight for tokenized securities, CFTC for some derivatives, state crypto licenses (e.g., NY BitLicense) and FinCEN AML/MSB requirements.&quot;
+    }
+  ],
+  &quot;trends&quot;: [
+    {
+      &quot;name&quot;: &quot;Embedded finance&quot;,
+      &quot;description&quot;: &quot;Non-financial platforms embed payments, banking, lending or insurance directly into their user experience via APIs and partner banks.&quot;,
+      &quot;why_it_matters&quot;: &quot;Expands distribution beyond traditional channels, lowers customer acquisition costs for financial services and creates new revenue streams for platforms and fintechs.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Open banking &amp; data connectivity&quot;,
+      &quot;description&quot;: &quot;APIs and aggregators enable secure sharing of financial data between institutions and third parties, improving onboarding, underwriting and account-linked services.&quot;,
+      &quot;why_it_matters&quot;: &quot;Accelerates product innovation (like instant account verification and personalized offers) and increases competition, but raises data security and consent management requirements.&quot;
+    },
+ …</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector remains a major innovation engine across payments, lending, BaaS and digital assets, driven by embedded finance, API-first infrastructure and AI. To evaluate startups for acceleration or funding fit, investors typically need the founder to specify the target subsegment, current traction (MRR, customers/pilots, runway), legal/regulatory status (MSB, money transmitter licenses, custody arrangements), founding team credentials, GTM route, and funding preferences.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, BaaS/infrastructure, wealthtech and crypto)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), driven by embedded finance, API-driven partnerships and AI adoption; near-term variability expected from interest rates, macro cycles and regulatory actions.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing, merchant services and related fees)&quot;,
+      &quot;growth_outlook&quot;: &quot;Steady growth as card and digital payments expand and commerce integrations deepen; margins may compress due to pricing competition and bundled commerce/ERP offerings.&quot;,
+      &quot;regulatory_notes&quot;: &quot;PCI-DSS for card data, NACHA rules for ACH, BSA/AML obligations and potential state money transmitter licensing depending on custody/flow of funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States lending origination and servicing revenue enabled by fintech platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical and rate-sensitive growth; innovation in alternative underwriting and AI can open underserved segments, but credit quality and capital costs drive performance.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to TILA, ECOA/Reg B (fair lending), CFPB oversight, state lending and licensing regimes and BSA/AML rules when lenders handle payments or custodial flows.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Banking-as-a-Service (BaaS) &amp; Core Banking APIs&quot;,
+      &quot;size_estimate&quot;: &quot;approx $80 billion (estimate, United States revenue for embedded banking, treasury, deposits and API banking platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;High demand from vertical platforms seeking embedded deposits, cards and lending; growth depends on bank partner capacity, regulatory compliance and margin sharing.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Many BaaS providers operate via insured bank partners and must meet bank supervisory expectations, vendor management, consumer protection rules, and may trigger MSB considerations if holding customer funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Crypto &amp; Digital Asset Infrastructure&quot;,
+      &quot;size_estimate&quot;: &quot;approx $30 billion (estimate, United States exchanges, custody, trading and infrastructure revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;High long-term upside but volatile near-term; dependent on regulatory clarity, institutional adoption and secure custody/legal frameworks.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Fragmented oversight: SEC/FINRA for tokenized securities and broker-dealer activities, CFTC for certain derivatives, state-level crypto licensing (e.g., BitLicense-like regimes) and FinCEN AML/MSB obligations.&quot;
+    }
+  ],
+  &quot;trends&quot;: [
+    {
+      &quot;name&quot;: &quot;Embedded finance&quot;,
+      &quot;description&quot;: &quot;Non-financial platforms embed payments, accounts, cards, lending or insurance through APIs and bank partnerships to deliver native financial services.&quot;,
+      &quot;why_it_matters&quot;: &quot;Creates new distribution channels, reduces CAC for financial products and shifts market power toward platform partners and API-first fintechs.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Open banking &amp; data connectivity&quot;,
+      &quot;description&quot;: &quot;APIs and aggregators enable account-level access and transaction data portability for onboarding, verification and decisio…</pre></details></div><div class="card" style="--c:#059669"><h3>4. Funding Advisor · revision round 1 <span class="muted">(32s)</span></h3><ul><li>Read the research (10 sections) for region &#x27;US&#x27;.</li><li>Memory recall: 0 of 0 past notes were used.</li><li>Produced: recommendations=7, types=[&#x27;accelerator&#x27;, &#x27;angel&#x27;, &#x27;competition&#x27;, &#x27;debt&#x27;, &#x27;government_program&#x27;, &#x27;venture_capital&#x27;], requests_to_research=5</li><li>Stored 7 notes in memory.</li><li>Handed off to pitch_coach: 7 funding options</li></ul><details><summary>Prompt sent to the model</summary><pre>Domain: fintech
+Region: US
+
+Research from the Research Agent:
+{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector remains a major innovation engine across payments, lending, BaaS and digital assets, driven by embedded finance, API-first infrastructure and AI. To evaluate startups for acceleration or funding fit, investors typically need the founder to specify the target subsegment, current traction (MRR, customers/pilots, runway), legal/regulatory status (MSB, money transmitter licenses, custody arrangements), founding team credentials, GTM route, and funding preferences.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, BaaS/infrastructure, wealthtech and crypto)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), driven by embedded finance, API-driven partnerships and AI adoption; near-term variability expected from interest rates, macro cycles and regulatory actions.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing, merchant services and related fees)&quot;,
+      &quot;growth_outlook&quot;: &quot;Steady growth as card and digital payments expand and commerce integrations deepen; margins may compress due to pricing competition and bundled commerce/ERP offerings.&quot;,
+      &quot;regulatory_notes&quot;: &quot;PCI-DSS for card data, NACHA rules for ACH, BSA/AML obligations and potential state money transmitter licensing depending on custody/flow of funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States lending origination and servicing revenue enabled by fintech platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical and rate-sensitive growth; innovation in alternative underwriting and AI can open underserved segments, but credit quality and capital costs drive performance.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to TILA, ECOA/Reg B (fair lending), CFPB oversight, state lending and licensing regimes and BSA/AML rules when lenders handle payments or custodial flows.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Banking-as-a-Service (BaaS) &amp; Core Banking APIs&quot;,
+      &quot;size_estimate&quot;: &quot;approx $80 billion (estimate, United States revenue for embedded banking, treasury, deposits and API banking platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;High demand from vertical platforms seeking embedded deposits, cards and lending; growth depends on bank partner capacity, regulatory compliance and margin sharing.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Many BaaS providers operate via insured bank partners and must meet bank supervisory expectations, vendor management, consumer protection rules, and may trigger MSB considerations if holding customer funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Crypto &amp; Digital Asset Infrastructure&quot;,
+      &quot;size_estimate&quot;: &quot;approx $30 billion (estimate, United States exchanges, custody, trading and infrastructure revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;High long-term upside but volatile near-term; dependent on regulatory clarity, institutional adoption and secure custody/legal frameworks.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Fragmented oversight: SEC/FINRA for tokenized securities and broker-dealer activities, CFTC for certain derivatives, state-level crypto licensing (e.g., BitLicense-like regimes) and FinCEN AML/MSB obligations.&quot;
+    }
+  ],
+  &quot;trends&quot;: [
+    {
+      &quot;name&quot;: &quot;Embedded finance&quot;,
+      &quot;description&quot;: &quot;Non-financial platforms embed payments, accounts, cards, lending or insurance through APIs and bank partnerships to deliver native financial services.&quot;,
+      &quot;why_it_matters&quot;: &quot;Creates new distribution channels, reduces CAC for financial products and shifts market power toward platform partners and API-first fintechs.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Open banking &amp; data connectivity&quot;,
+      &quot;description&quot;: &quot;APIs and aggregators enable account-level access and transac…</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;stage_assumption&quot;: &quot;pre-seed&quot;,
+  &quot;strategy_summary&quot;: &quot;For a US pre-seed fintech founder I recommend a blended path: join a fintech-focused accelerator to get mentorship, bank/partner introductions and regulatory playbooks; pursue targeted competitions and government innovation grants focused on RegTech/AI to de-risk compliance work; and simultaneously build relationships with fintech-specialist angels and seed VCs while keeping venture debt or receivables financing as a later-stage complement. This approach matches the market reality that traction, regulatory clarity and bank/partner relationships materially increase fundraising options in payments, BaaS and lending.&quot;,
+  &quot;recommendations&quot;: [
+    {
+      &quot;name&quot;: &quot;Plug and Play Fintech (or similar industry-focused accelerator)&quot;,
+      &quot;type&quot;: &quot;accelerator&quot;,
+      &quot;provider&quot;: &quot;Plug and Play Tech Center (Fintech program)&quot;,
+      &quot;fit_reason&quot;: &quot;Accelerators with a fintech focus provide bank and enterprise introductions that are directly relevant to embedded finance and BaaS opportunities described in the research (helps secure distribution and bank partners). They also offer compliance mentorship which addresses the regulatory scrutiny trend.&quot;,
+      &quot;typical_range&quot;: &quot;$25k–$150k in direct program funding plus introductions and pilot opportunities (estimate)&quot;,
+      &quot;eligibility_notes&quot;: &quot;Pre-seed to seed startups, often must demonstrate product-market fit or an enterprise pilot; some programs take equity.&quot;,
+      &quot;verify&quot;: &quot;Confirm current application windows, exact program terms (equity percentage, stipend, demo day format), and whether they run vertical cohorts aligned with your subsegment (payments, BaaS, crypto/regtech).&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Techstars Fintech / Bank-sponsored accelerators&quot;,
+      &quot;type&quot;: &quot;accelerator&quot;,
+      &quot;provider&quot;: &quot;Techstars (fintech or bank-partnered cohorts)&quot;,
+      &quot;fit_reason&quot;: &quot;Bank-partnered accelerator tracks accelerate go-to-market for embedded finance and BaaS plays and provide vendor/bank-sponsor credibility — useful given the research emphasis on bank partnerships and regulatory oversight.&quot;,
+      &quot;typical_range&quot;: &quot;$20k–$150k plus network access and pilot introductions (estimate)&quot;,
+      &quot;eligibility_notes&quot;: &quot;Often selective; expect requirements around team composition and initial traction or pilot-ready product.&quot;,
+      &quot;verify&quot;: &quot;Confirm the specific cohort focus (some are geography- or bank-specific), current investment terms, and whether the accelerator facilitates introductions to regulated bank partners relevant to your product.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;SBIR/STTR and state innovation grants (for RegTech / AI compliance tooling)&quot;,
+      &quot;type&quot;: &quot;government_program&quot;,
+      &quot;provider&quot;: &quot;SBIR/STTR (federal) and state/local innovation/economic development grants&quot;,
+      &quot;fit_reason&quot;: &quot;The research highlights demand for compliance automation and RegTech (due to rising regulatory scrutiny). SBIR/STTR and state innovation grants can provide non-dilutive, phase-based funding to build technically novel AI/ML solutions for compliance, fraud detection or secure data connectivity.&quot;,
+      &quot;typical_range&quot;: &quot;$50k–$1M+ across phased awards (phase-based, estimate)&quot;,
+      &quot;eligibility_notes&quot;: &quot;SBIR/STTR usually requires a strong technical/scientific innovation angle and US-based ownership; not all fintech ideas will qualify (many finance products without a technical R&amp;D component are ineligible). State grants vary widely in scope.&quot;,
+      &quot;verify&quot;: &quot;Confirm agency fit (e.g., NSF, NSF-level tech focus vs other agencies), current solicitations, allowable commercial activities, matching fund requirements, and timelines for application and award.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Visa Everywhere Initiative / Money20/20 startup competitions and corporate pilots&quot;,
+      &quot;type&quot;: &quot;competition&quot;,
+      &quot;provider&quot;: &quot;Visa Everywhere Initiative, Money20/20 pitch tracks, or bank-sponsored startup challenges&quot;,
+      &quot;…</pre></details></div><div class="decision">↳ Loop guard: a second funding → research round was refused</div><div class="card" style="--c:#d97706"><h3>5. Pitch Coach · revision round 1 <span class="muted">(59s)</span></h3><ul><li>Read the research (10 sections) and 7 funding options.</li><li>Produced: slides=12, sources=[&#x27;founder&#x27;, &#x27;funding&#x27;, &#x27;mixed&#x27;, &#x27;research&#x27;], ready=False</li><li>Sent feedback to research_agent: Market and business-model guidance lacks practical benchmarking for unit economics and GTM metrics per subsegment.</li><li>Sent feedback to funding_advisor: Funding guidance lists many suitable programs but does not prioritize them by subsegment or give typical equity/covenant expectations.</li><li>Handed off to founder: 12-slide outline, ready=False</li></ul><details><summary>Prompt sent to the model</summary><pre>Domain: fintech
+
+Research from the Research Agent:
+{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector remains a major innovation engine across payments, lending, BaaS and digital assets, driven by embedded finance, API-first infrastructure and AI. To evaluate startups for acceleration or funding fit, investors typically need the founder to specify the target subsegment, current traction (MRR, customers/pilots, runway), legal/regulatory status (MSB, money transmitter licenses, custody arrangements), founding team credentials, GTM route, and funding preferences.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, BaaS/infrastructure, wealthtech and crypto)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), driven by embedded finance, API-driven partnerships and AI adoption; near-term variability expected from interest rates, macro cycles and regulatory actions.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing, merchant services and related fees)&quot;,
+      &quot;growth_outlook&quot;: &quot;Steady growth as card and digital payments expand and commerce integrations deepen; margins may compress due to pricing competition and bundled commerce/ERP offerings.&quot;,
+      &quot;regulatory_notes&quot;: &quot;PCI-DSS for card data, NACHA rules for ACH, BSA/AML obligations and potential state money transmitter licensing depending on custody/flow of funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States lending origination and servicing revenue enabled by fintech platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical and rate-sensitive growth; innovation in alternative underwriting and AI can open underserved segments, but credit quality and capital costs drive performance.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to TILA, ECOA/Reg B (fair lending), CFPB oversight, state lending and licensing regimes and BSA/AML rules when lenders handle payments or custodial flows.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Banking-as-a-Service (BaaS) &amp; Core Banking APIs&quot;,
+      &quot;size_estimate&quot;: &quot;approx $80 billion (estimate, United States revenue for embedded banking, treasury, deposits and API banking platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;High demand from vertical platforms seeking embedded deposits, cards and lending; growth depends on bank partner capacity, regulatory compliance and margin sharing.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Many BaaS providers operate via insured bank partners and must meet bank supervisory expectations, vendor management, consumer protection rules, and may trigger MSB considerations if holding customer funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Crypto &amp; Digital Asset Infrastructure&quot;,
+      &quot;size_estimate&quot;: &quot;approx $30 billion (estimate, United States exchanges, custody, trading and infrastructure revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;High long-term upside but volatile near-term; dependent on regulatory clarity, institutional adoption and secure custody/legal frameworks.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Fragmented oversight: SEC/FINRA for tokenized securities and broker-dealer activities, CFTC for certain derivatives, state-level crypto licensing (e.g., BitLicense-like regimes) and FinCEN AML/MSB obligations.&quot;
+    }
+  ],
+  &quot;trends&quot;: [
+    {
+      &quot;name&quot;: &quot;Embedded finance&quot;,
+      &quot;description&quot;: &quot;Non-financial platforms embed payments, accounts, cards, lending or insurance through APIs and bank partnerships to deliver native financial services.&quot;,
+      &quot;why_it_matters&quot;: &quot;Creates new distribution channels, reduces CAC for financial products and shifts market power toward platform partners and API-first fintechs.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Open banking &amp; data connectivity&quot;,
+      &quot;description&quot;: &quot;APIs and aggregators enable account-level access and transaction data p…</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;deck_title&quot;: &quot;[Founder to fill: Company name] — investor pitch&quot;,
+  &quot;narrative_arc&quot;: &quot;We solve a high-cost, high-risk compliance and distribution problem that blocks platforms and SMEs from offering modern embedded financial services. By building a tightly compliant, API-first solution tailored to [Founder to fill: subsegment], we unlock recurring revenue via BaaS/transaction fees while de-risking partner adoption through regulatory playbooks and bank introductions.&quot;,
+  &quot;slides&quot;: [
+    {
+      &quot;number&quot;: 1,
+      &quot;title&quot;: &quot;Title — Company &amp; Mission&quot;,
+      &quot;purpose&quot;: &quot;Introduce the company, one-line mission and the current fundraising stage/ask placeholder.&quot;,
+      &quot;key_points&quot;: [
+        &quot;[Founder to fill: Company name]&quot;,
+        &quot;[Founder to fill: One-line mission / tagline]&quot;,
+        &quot;[Founder to fill: Current stage (pre-seed) and requested round amount / instrument — placeholder]&quot;
+      ],
+      &quot;data_source&quot;: &quot;founder&quot;,
+      &quot;evidence_used&quot;: &quot;none&quot;,
+      &quot;visual_suggestion&quot;: &quot;Full-bleed slide with company logo (or placeholder), one-line mission large, and small stage/ask placeholder.&quot;,
+      &quot;speaker_note&quot;: &quot;Quick 10–15s intro: who you are, what you build, and the high-level ask.&quot;
+    },
+    {
+      &quot;number&quot;: 2,
+      &quot;title&quot;: &quot;Problem — market pain and regulatory friction&quot;,
+      &quot;purpose&quot;: &quot;Convince investors there is a material, measurable pain driven by regulation, integration friction and high compliance costs.&quot;,
+      &quot;key_points&quot;: [
+        &quot;Platforms, SMBs and vertical marketplaces face high friction bringing embedded finance live due to bank partner gating and integration complexity.&quot;,
+        &quot;Rising regulatory scrutiny and enforcement (consumer protection, AML, state money transmitter rules) makes compliance costly and slow (Research: &#x27;Regulatory scrutiny &amp; compliance automation&#x27;, &#x27;Regulatory uncertainty and enforcement risk&#x27;).&quot;,
+        &quot;Legacy providers and incumbents are not optimized for fast, API-first pilots — this raises CAC and blocks distribution for new fintechs.&quot;
+      ],
+      &quot;data_source&quot;: &quot;research&quot;,
+      &quot;evidence_used&quot;: &quot;Trends: &#x27;Regulatory scrutiny &amp; compliance automation&#x27;; Risks: &#x27;Regulatory uncertainty and enforcement risk&#x27;; Trend: &#x27;Embedded finance&#x27;&quot;,
+      &quot;visual_suggestion&quot;: &quot;Three-column problem visualization: integration friction, regulatory cost, go-to-market blockage with short statistic callouts (placeholders).&quot;,
+      &quot;speaker_note&quot;: &quot;Explain why regulation and partner integration are the dominant adoption blockers and how that creates a market opportunity for a compliant, API-first approach.&quot;
+    },
+    {
+      &quot;number&quot;: 3,
+      &quot;title&quot;: &quot;Solution — what we deliver&quot;,
+      &quot;purpose&quot;: &quot;State the product offering and how it directly addresses the problem above (use founder-provided product details).&quot;,
+      &quot;key_points&quot;: [
+        &quot;[Founder to fill: Concise product description — what you sell (e.g., modular BaaS, payments API, RegTech AI for AML), how it integrates, and the core value prop].&quot;,
+        &quot;[Founder to fill: How the product reduces compliance friction and speeds bank/partner onboarding].&quot;,
+        &quot;[Founder to fill: Primary technical or regulatory differentiator (e.g., pre-built bank playbooks, ML explainability controls, custody integrations)].&quot;
+      ],
+      &quot;data_source&quot;: &quot;founder&quot;,
+      &quot;evidence_used&quot;: &quot;none&quot;,
+      &quot;visual_suggestion&quot;: &quot;Simple diagram showing inputs (platforms/SMBs), your product as the middleware layer, and outputs (bank partners, users, revenue).&quot;,
+      &quot;speaker_note&quot;: &quot;High-level product statement; save feature deep-dive for Q&amp;A or product slide.&quot;
+    },
+    {
+      &quot;number&quot;: 4,
+      &quot;title&quot;: &quot;Market opportunity&quot;,
+      &quot;purpose&quot;: &quot;Define the addressable market, relevant subsegments and growth drivers so investors see scale and fit.&quot;,
+      &quot;key_points&quot;: [
+        &quot;Total US fintech revenue and service fees estimate: approx $350 billion (Research: market_overview).&quot;,
+        &quot;Relevant subsegments with research e…</pre></details></div><div class="decision">↳ Coach has 2 outstanding feedback item(s): starting revision round 2</div><div class="decision">↳ Coach feedback delivered to: funding_advisor, pitch_coach, research_agent</div><div class="card" style="--c:#2563eb"><h3>6. Research Agent · revision round 2 <span class="muted">(25s)</span></h3><ul><li>Researched &#x27;fintech&#x27; for region &#x27;US&#x27;.</li><li>Received feedback from pitch_coach: Market and business-model guidance lacks practical benchmarking for unit economics and GTM metrics per subsegment. → asked: Provide benchmark KPI ranges (typical CAC, LTV, take-rate or yield, gross margin, and MRR brackets) and common pilot success metrics for each subsegment (Payments, Digit…</li><li>Memory recall: 0 of 0 past notes were used.</li><li>Produced: trends=5</li><li>Stored 16 notes in memory.</li><li>Handed off to funding_advisor: 5 trends, 3 opportunities</li></ul><details><summary>Prompt sent to the model</summary><pre>Domain: fintech
+Region: US
+
+Your previous research:
+{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector remains a major innovation engine across payments, lending, BaaS and digital assets, driven by embedded finance, API-first infrastructure and AI. To evaluate startups for acceleration or funding fit, investors typically need the founder to specify the target subsegment, current traction (MRR, customers/pilots, runway), legal/regulatory status (MSB, money transmitter licenses, custody arrangements), founding team credentials, GTM route, and funding preferences.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, BaaS/infrastructure, wealthtech and crypto)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), driven by embedded finance, API-driven partnerships and AI adoption; near-term variability expected from interest rates, macro cycles and regulatory actions.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing, merchant services and related fees)&quot;,
+      &quot;growth_outlook&quot;: &quot;Steady growth as card and digital payments expand and commerce integrations deepen; margins may compress due to pricing competition and bundled commerce/ERP offerings.&quot;,
+      &quot;regulatory_notes&quot;: &quot;PCI-DSS for card data, NACHA rules for ACH, BSA/AML obligations and potential state money transmitter licensing depending on custody/flow of funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States lending origination and servicing revenue enabled by fintech platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical and rate-sensitive growth; innovation in alternative underwriting and AI can open underserved segments, but credit quality and capital costs drive performance.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to TILA, ECOA/Reg B (fair lending), CFPB oversight, state lending and licensing regimes and BSA/AML rules when lenders handle payments or custodial flows.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Banking-as-a-Service (BaaS) &amp; Core Banking APIs&quot;,
+      &quot;size_estimate&quot;: &quot;approx $80 billion (estimate, United States revenue for embedded banking, treasury, deposits and API banking platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;High demand from vertical platforms seeking embedded deposits, cards and lending; growth depends on bank partner capacity, regulatory compliance and margin sharing.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Many BaaS providers operate via insured bank partners and must meet bank supervisory expectations, vendor management, consumer protection rules, and may trigger MSB considerations if holding customer funds.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Crypto &amp; Digital Asset Infrastructure&quot;,
+      &quot;size_estimate&quot;: &quot;approx $30 billion (estimate, United States exchanges, custody, trading and infrastructure revenue)&quot;,
+      &quot;growth_outlook&quot;: &quot;High long-term upside but volatile near-term; dependent on regulatory clarity, institutional adoption and secure custody/legal frameworks.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Fragmented oversight: SEC/FINRA for tokenized securities and broker-dealer activities, CFTC for certain derivatives, state-level crypto licensing (e.g., BitLicense-like regimes) and FinCEN AML/MSB obligations.&quot;
+    }
+  ],
+  &quot;trends&quot;: [
+    {
+      &quot;name&quot;: &quot;Embedded finance&quot;,
+      &quot;description&quot;: &quot;Non-financial platforms embed payments, accounts, cards, lending or insurance through APIs and bank partnerships to deliver native financial services.&quot;,
+      &quot;why_it_matters&quot;: &quot;Creates new distribution channels, reduces CAC for financial products and shifts market power toward platform partners and API-first fintechs.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Open banking &amp; data connectivity&quot;,
+      &quot;description&quot;: &quot;APIs and aggregators enable account-level access and transaction data …</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector continues to expand across payments, lending, BaaS and digital assets, driven by embedded finance, API-first infrastructure and AI-enabled risk tooling. Startups need clear subsegment focus, regulatory posture and unit-economics benchmarks to be acceleration-ready.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, BaaS/infrastructure, wealthtech and crypto)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), powered by embedded finance, open APIs and AI; near-term variability expected from interest-rate cycles, regulatory actions and crypto market volatility.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing, merchant services and related fees)&quot;,
+      &quot;growth_outlook&quot;: &quot;Steady demand as card and digital payments expand; typical unit-economics (estimates) — take-rate: 0.5%–4% of GMV (blended); gross margin: ~30%–70% depending on software vs passthrough fees; CAC: ~$300–$1,200 for SMB customers (wide range by channel); LTV: ~$2k–$15k for SMBs (high variance by ARR and product bundling). Common pilot success metrics (estimates): pilot GMV conversion to live product &gt;20% within 3 months, onboarding completion &gt;75–90%, chargeback rate &lt;1%, monthly active merchants and revenue per merchant targets met within 90 days. These figures are estimates and vary by vertical and pricing model.&quot;,
+      &quot;regulatory_notes&quot;: &quot;PCI-DSS for card data; NACHA rules for ACH; BSA/AML obligations; potential state money transmitter licensing depending on custody or stored-value features (estimates).&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States lending origination and servicing revenue enabled by fintech platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical and rate-sensitive with opportunity from alternative underwriting and AI. Typical unit-economics (estimates) — origination fees / take-rate: ~1%–6% of loan volume; net yield / spread: highly variable depending on funding cost (net interest margin for platform lenders often ranges widely after credit costs); gross margin: ~10%–40% (estimate, dependent on credit losses and funding cost). CAC: consumer ~$100–$600, SMB ~$500–$2,000. LTV: ~$300–$10,000+ depending on repeat borrowing and product. Pilot success metrics (estimates): application-to-fund conversion &gt;10–30%, 30+ day delinquency &lt;5–15% (cohort-dependent), average loan size and payback cadence meeting pre-defined IRR targets. All figures are estimates and cohort-sensitive.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to federal consumer protection rules (TILA), ECOA/Reg B (fair-lending), CFPB oversight; state lending and licensing regimes; BSA/AML when handling payments or custodial flows; servicing and collection rules apply.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Banking-as-a-Service (BaaS) &amp; Core Banking APIs&quot;,
+      &quot;size_estimate&quot;: &quot;approx $80 billion (estimate, United States revenue for embedded banking, treasury, deposits and API banking platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;High demand from vertical platforms seeking embedded deposits, cards and lending. Typical unit-economics (estimates) — pricing models: per-account fees ~$0.50–$5/month, interchange share or basis points on flows (10–50 bps typical), platform software margins ~40%–80% for API/software layers. CAC (enterprise/embedded clients): ~$5k–$50k; LTV: ~$50k–$1M+ (enterprise relationships). Pilot success metrics (estimates): integration time &lt;60–120 days, active accounts per pilot &gt;1k+ depending on vertical, deposit-per-account and transaction volume meeting agreed thresholds, SLA/uptime and security audits passed. Estimates vary by go-to-market (platform vs enterprise).&quot;,
+      &quot;regulatory_notes&quot;: &quot;Many BaaS pla…</pre></details></div><div class="card" style="--c:#059669"><h3>7. Funding Advisor · revision round 2 <span class="muted">(32s)</span></h3><ul><li>Read the research (10 sections) for region &#x27;US&#x27;.</li><li>Received feedback from pitch_coach: Funding guidance lists many suitable programs but does not prioritize them by subsegment or give typical equity/covenant expectations. → asked: From your experience, prioritize the recommended programs (Plug and Play Fintech, Techstars Fintech, SBIR/STTR, Visa Everywhere Initiative, early-stage fintech VCs, ange…</li><li>Memory recall: 0 of 0 past notes were used.</li><li>Produced: recommendations=6, types=[&#x27;accelerator&#x27;, &#x27;angel&#x27;, &#x27;competition&#x27;, &#x27;debt&#x27;, &#x27;government_program&#x27;, &#x27;venture_capital&#x27;], requests_to_research=5</li><li>Stored 6 notes in memory.</li><li>Handed off to pitch_coach: 6 funding options</li></ul><details><summary>Prompt sent to the model</summary><pre>Domain: fintech
+Region: US
+
+Research from the Research Agent:
+{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector continues to expand across payments, lending, BaaS and digital assets, driven by embedded finance, API-first infrastructure and AI-enabled risk tooling. Startups need clear subsegment focus, regulatory posture and unit-economics benchmarks to be acceleration-ready.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, BaaS/infrastructure, wealthtech and crypto)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), powered by embedded finance, open APIs and AI; near-term variability expected from interest-rate cycles, regulatory actions and crypto market volatility.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing, merchant services and related fees)&quot;,
+      &quot;growth_outlook&quot;: &quot;Steady demand as card and digital payments expand; typical unit-economics (estimates) \u2014 take-rate: 0.5%\u20134% of GMV (blended); gross margin: ~30%\u201370% depending on software vs passthrough fees; CAC: ~$300\u2013$1,200 for SMB customers (wide range by channel); LTV: ~$2k\u2013$15k for SMBs (high variance by ARR and product bundling). Common pilot success metrics (estimates): pilot GMV conversion to live product &gt;20% within 3 months, onboarding completion &gt;75\u201390%, chargeback rate &lt;1%, monthly active merchants and revenue per merchant targets met within 90 days. These figures are estimates and vary by vertical and pricing model.&quot;,
+      &quot;regulatory_notes&quot;: &quot;PCI-DSS for card data; NACHA rules for ACH; BSA/AML obligations; potential state money transmitter licensing depending on custody or stored-value features (estimates).&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States lending origination and servicing revenue enabled by fintech platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical and rate-sensitive with opportunity from alternative underwriting and AI. Typical unit-economics (estimates) \u2014 origination fees / take-rate: ~1%\u20136% of loan volume; net yield / spread: highly variable depending on funding cost (net interest margin for platform lenders often ranges widely after credit costs); gross margin: ~10%\u201340% (estimate, dependent on credit losses and funding cost). CAC: consumer ~$100\u2013$600, SMB ~$500\u2013$2,000. LTV: ~$300\u2013$10,000+ depending on repeat borrowing and product. Pilot success metrics (estimates): application-to-fund conversion &gt;10\u201330%, 30+ day delinquency &lt;5\u201315% (cohort-dependent), average loan size and payback cadence meeting pre-defined IRR targets. All figures are estimates and cohort-sensitive.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to federal consumer protection rules (TILA), ECOA/Reg B (fair-lending), CFPB oversight; state lending and licensing regimes; BSA/AML when handling payments or custodial flows; servicing and collection rules apply.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Banking-as-a-Service (BaaS) &amp; Core Banking APIs&quot;,
+      &quot;size_estimate&quot;: &quot;approx $80 billion (estimate, United States revenue for embedded banking, treasury, deposits and API banking platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;High demand from vertical platforms seeking embedded deposits, cards and lending. Typical unit-economics (estimates) \u2014 pricing models: per-account fees ~$0.50\u2013$5/month, interchange share or basis points on flows (10\u201350 bps typical), platform software margins ~40%\u201380% for API/software layers. CAC (enterprise/embedded clients): ~$5k\u2013$50k; LTV: ~$50k\u2013$1M+ (enterprise relationships). Pilot success metrics (estimates): integration time &lt;60\u2013120 days, active accounts per pilot &gt;1k+ depending on vertical, deposit-per-account and transaction volum…</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;stage_assumption&quot;: &quot;pre-seed&quot;,
+  &quot;strategy_summary&quot;: &quot;Pursue a blended path: join an industry fintech accelerator (for bank/partner intros and compliance playbooks) while applying for non-dilutive R&amp;D grants if you are building RegTech/AI; parallel-track targeted competitions for pilot leads and raise from fintech-specialist angels and seed VCs once you have pilot traction and basic regulatory clarity. Use venture debt/receivables financing later only after predictable revenue or transaction volume is established.&quot;,
+  &quot;recommendations&quot;: [
+    {
+      &quot;name&quot;: &quot;Industry-focused accelerators (examples: Plug and Play Fintech, Techstars bank/fintech cohorts)&quot;,
+      &quot;type&quot;: &quot;accelerator&quot;,
+      &quot;provider&quot;: &quot;Plug and Play / Techstars / bank-sponsored accelerator cohorts (examples)&quot;,
+      &quot;fit_reason&quot;: &quot;Accelerators provide curated introductions to bank partners, payments networks and enterprise pilots that directly address the research trends of embedded finance, BaaS and the need for bank/partner credibility. Priority by subsegment: high for BaaS &amp; embedded finance, high for Payments &amp; Merchant Services, medium for RegTech, lower for Crypto unless cohort is crypto-specific.&quot;,
+      &quot;typical_range&quot;: &quot;program support + pilot introductions; direct funding/stipend estimate $20k\u2013$150k (estimate) and network/pilot access&quot;,
+      &quot;eligibility_notes&quot;: &quot;Pre-seed to seed teams with at least a working prototype or pilot-ready product are typical. Typical pre-seed accelerator equity range (estimate): ~4%\u201310% for standard cohorts (varies; some programs take convertible notes or no equity in exchange for paid pilots). Selection criteria: technical team, pilot/customer traction, clear subsegment focus, security/compliance basics (PCI, AML awareness) for payment/BaaS plays.&quot;,
+      &quot;verify&quot;: &quot;Confirm current program terms (equity or SAFE terms, stipend amount), cohort focus (payments, BaaS, crypto, RegTech), application windows and whether they facilitate bank-sponsor pilot introductions or require an existing pilot.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;SBIR/STTR and state innovation grants (best for RegTech/AI and technically novel compliance tooling)&quot;,
+      &quot;type&quot;: &quot;government_program&quot;,
+      &quot;provider&quot;: &quot;SBIR/STTR (federal) and state/local innovation/economic development grants (examples)&quot;,
+      &quot;fit_reason&quot;: &quot;Research highlights demand for compliance automation and AI-driven monitoring; SBIR/STTR funds technically novel R&amp;D (model explainability, AML analytics, secure data-sharing) and gives non-dilutive runway to build regulated tooling that de-risks bank/partner conversations. Priority by subsegment: high for RegTech/AI, medium for data/connectivity infrastructure, lower for pure payments or consumer lending products without an R&amp;D component.&quot;,
+      &quot;typical_range&quot;: &quot;phase-based awards; small-phase awards to &gt;$1M+ across phases (estimate)&quot;,
+      &quot;eligibility_notes&quot;: &quot;Non-dilutive but requires a demonstrable technical R&amp;D innovation and US-based ownership. Selection criteria: technically novel solution, clear research plan, commercialization path tied to financial-sector use cases. Not all commercial fintech products qualify—pure go-to-market costs are usually ineligible.&quot;,
+      &quot;verify&quot;: &quot;Confirm agency fit (e.g., NSF, DoD, EPA depending on tech angle), current solicitations, application deadlines, allowable activities (commercialization vs R&amp;D), and any state grant matching requirements.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Startup competitions &amp; corporate pilot challenges (examples: Visa Everywhere Initiative, Money20/20 startup tracks, bank-sponsored challenges)&quot;,
+      &quot;type&quot;: &quot;competition&quot;,
+      &quot;provider&quot;: &quot;Visa Everywhere Initiative / Money20/20 pitch tracks / bank-sponsored startup competitions (examples)&quot;,
+      &quot;fit_reason&quot;: &quot;Competitions deliver visibility with payments processors, merchants and platform owners and often lead to prize funding or paid pilots — aligning with the resear…</pre></details></div><div class="decision">↳ Loop guard: a second funding → research round was refused</div><div class="card" style="--c:#d97706"><h3>8. Pitch Coach · revision round 2 <span class="muted">(42s)</span></h3><ul><li>Read the research (10 sections) and 6 funding options.</li><li>Received feedback from orchestrator: Peers are revising their work based on your feedback. → asked: Revise the outline using the updated research and funding.</li><li>Produced: slides=12, sources=[&#x27;founder&#x27;, &#x27;funding&#x27;, &#x27;mixed&#x27;, &#x27;research&#x27;], ready=False</li><li>Sent feedback to research_agent: Unit-economics and pilot KPI benchmarks per subsegment are high-level in the research but not granular enough to set realistic stage-one targets.</li><li>Sent feedback to funding_advisor: Funding recommendations list suitable programs but lack prioritization and expected pre-seed deal/term norms by subsegment.</li><li>Handed off to founder: 12-slide outline, ready=False</li></ul><details><summary>Prompt sent to the model</summary><pre>Domain: fintech
+
+Research from the Research Agent:
+{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;summary&quot;: &quot;The US fintech sector continues to expand across payments, lending, BaaS and digital assets, driven by embedded finance, API-first infrastructure and AI-enabled risk tooling. Startups need clear subsegment focus, regulatory posture and unit-economics benchmarks to be acceleration-ready.&quot;,
+  &quot;market_overview&quot;: {
+    &quot;size_estimate&quot;: &quot;approx $350 billion (estimate, United States fintech revenue and service fees across payments, lending, BaaS/infrastructure, wealthtech and crypto)&quot;,
+    &quot;growth_outlook&quot;: &quot;Moderate-to-strong growth over the next 3-5 years (estimate), powered by embedded finance, open APIs and AI; near-term variability expected from interest-rate cycles, regulatory actions and crypto market volatility.&quot;
+  },
+  &quot;subsegments&quot;: [
+    {
+      &quot;name&quot;: &quot;Payments &amp; Merchant Services&quot;,
+      &quot;size_estimate&quot;: &quot;approx $150 billion (estimate, United States payments processing, merchant services and related fees)&quot;,
+      &quot;growth_outlook&quot;: &quot;Steady demand as card and digital payments expand; typical unit-economics (estimates) \u2014 take-rate: 0.5%\u20134% of GMV (blended); gross margin: ~30%\u201370% depending on software vs passthrough fees; CAC: ~$300\u2013$1,200 for SMB customers (wide range by channel); LTV: ~$2k\u2013$15k for SMBs (high variance by ARR and product bundling). Common pilot success metrics (estimates): pilot GMV conversion to live product &gt;20% within 3 months, onboarding completion &gt;75\u201390%, chargeback rate &lt;1%, monthly active merchants and revenue per merchant targets met within 90 days. These figures are estimates and vary by vertical and pricing model.&quot;,
+      &quot;regulatory_notes&quot;: &quot;PCI-DSS for card data; NACHA rules for ACH; BSA/AML obligations; potential state money transmitter licensing depending on custody or stored-value features (estimates).&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Digital Lending (consumer &amp; SMB)&quot;,
+      &quot;size_estimate&quot;: &quot;approx $60 billion (estimate, United States lending origination and servicing revenue enabled by fintech platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;Cyclical and rate-sensitive with opportunity from alternative underwriting and AI. Typical unit-economics (estimates) \u2014 origination fees / take-rate: ~1%\u20136% of loan volume; net yield / spread: highly variable depending on funding cost (net interest margin for platform lenders often ranges widely after credit costs); gross margin: ~10%\u201340% (estimate, dependent on credit losses and funding cost). CAC: consumer ~$100\u2013$600, SMB ~$500\u2013$2,000. LTV: ~$300\u2013$10,000+ depending on repeat borrowing and product. Pilot success metrics (estimates): application-to-fund conversion &gt;10\u201330%, 30+ day delinquency &lt;5\u201315% (cohort-dependent), average loan size and payback cadence meeting pre-defined IRR targets. All figures are estimates and cohort-sensitive.&quot;,
+      &quot;regulatory_notes&quot;: &quot;Subject to federal consumer protection rules (TILA), ECOA/Reg B (fair-lending), CFPB oversight; state lending and licensing regimes; BSA/AML when handling payments or custodial flows; servicing and collection rules apply.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Banking-as-a-Service (BaaS) &amp; Core Banking APIs&quot;,
+      &quot;size_estimate&quot;: &quot;approx $80 billion (estimate, United States revenue for embedded banking, treasury, deposits and API banking platforms)&quot;,
+      &quot;growth_outlook&quot;: &quot;High demand from vertical platforms seeking embedded deposits, cards and lending. Typical unit-economics (estimates) \u2014 pricing models: per-account fees ~$0.50\u2013$5/month, interchange share or basis points on flows (10\u201350 bps typical), platform software margins ~40%\u201380% for API/software layers. CAC (enterprise/embedded clients): ~$5k\u2013$50k; LTV: ~$50k\u2013$1M+ (enterprise relationships). Pilot success metrics (estimates): integration time &lt;60\u2013120 days, active accounts per pilot &gt;1k+ depending on vertical, deposit-per-account and transaction volume meeting a…</pre></details><details><summary>Model response</summary><pre>{
+  &quot;domain&quot;: &quot;fintech&quot;,
+  &quot;deck_title&quot;: &quot;[Founder to fill: Company name] — investor pitch&quot;,
+  &quot;narrative_arc&quot;: &quot;We remove the compliance, integration and partner-friction that prevents platforms and SMBs from launching embedded financial services. By delivering an API-first, compliance-minded solution tailored to [Founder to fill: subsegment], we unlock recurring BaaS/transaction revenue and accelerate pilot-to-production adoption through bank-ready playbooks and targeted partnerships.&quot;,
+  &quot;slides&quot;: [
+    {
+      &quot;number&quot;: 1,
+      &quot;title&quot;: &quot;Title — Company &amp; Mission&quot;,
+      &quot;purpose&quot;: &quot;Introduce the company, succinct mission and the current fundraising stage/ask so investors know the context immediately.&quot;,
+      &quot;key_points&quot;: [
+        &quot;[Founder to fill: Company name]&quot;,
+        &quot;[Founder to fill: One-line mission / tagline]&quot;,
+        &quot;Stage: pre-seed (placeholder) | Ask: [Founder to fill: amount &amp; instrument]&quot;
+      ],
+      &quot;data_source&quot;: &quot;founder&quot;,
+      &quot;evidence_used&quot;: &quot;none&quot;,
+      &quot;visual_suggestion&quot;: &quot;Full-bleed slide with company logo or placeholder, mission large, stage/ask in a corner.&quot;,
+      &quot;speaker_note&quot;: &quot;Quick 10–15s intro: who you are, what you build, and the high-level ask.&quot;
+    },
+    {
+      &quot;number&quot;: 2,
+      &quot;title&quot;: &quot;Problem — regulatory friction and integration cost&quot;,
+      &quot;purpose&quot;: &quot;Convince investors the pain is material, created by regulation and partner integration friction, and that it blocks distribution and increases CAC/time-to-revenue.&quot;,
+      &quot;key_points&quot;: [
+        &quot;Platforms/SMBs face slow bank gating, complex integrations and costly compliance (Research trend: &#x27;Embedded finance&#x27; + &#x27;Regulatory scrutiny &amp; compliance automation&#x27;).&quot;,
+        &quot;Regulatory uncertainty and enforcement risk (Research: &#x27;Regulatory uncertainty and enforcement risk&#x27;) raises capital and operational burdens for fintech pilots and partners.&quot;,
+        &quot;Legacy infrastructure and inconsistent data connectivity increase pilot time and CAC, creating a measurable barrier to scaling embedded finance.&quot;
+      ],
+      &quot;data_source&quot;: &quot;research&quot;,
+      &quot;evidence_used&quot;: &quot;Trends: &#x27;Embedded finance&#x27;, &#x27;Regulatory scrutiny &amp; compliance automation&#x27;; Risks: &#x27;Regulatory uncertainty and enforcement risk&#x27;&quot;,
+      &quot;visual_suggestion&quot;: &quot;Three-pane problem graphic: &#x27;Integration friction&#x27;, &#x27;Regulatory cost/risk&#x27;, &#x27;Go-to-market blockage&#x27; with short callouts from research.&quot;,
+      &quot;speaker_note&quot;: &quot;Frame the problem as a combined technical + regulatory gate that prevents pilots from converting into recurring revenue.&quot;
+    },
+    {
+      &quot;number&quot;: 3,
+      &quot;title&quot;: &quot;Solution — product summary&quot;,
+      &quot;purpose&quot;: &quot;State the product, how it eliminates the problem and the primary technical/regulatory differentiators.&quot;,
+      &quot;key_points&quot;: [
+        &quot;[Founder to fill: Concise product description — what you sell (e.g., modular BaaS, payments API, RegTech AI for AML) and who it plugs into].&quot;,
+        &quot;[Founder to fill: How the product reduces compliance friction and shortens bank/partner onboarding].&quot;,
+        &quot;[Founder to fill: Primary differentiator (e.g., bank playbooks, ML explainability, custody integration, vertical specialization)].&quot;
+      ],
+      &quot;data_source&quot;: &quot;founder&quot;,
+      &quot;evidence_used&quot;: &quot;none&quot;,
+      &quot;visual_suggestion&quot;: &quot;Simple diagram: Customer (platform/SMB) → Your API/Compliance Layer → Bank/Processor/Custodian.&quot;,
+      &quot;speaker_note&quot;: &quot;High-level product statement — emphasize the compliance and partner-readiness that de-risks pilots.&quot;
+    },
+    {
+      &quot;number&quot;: 4,
+      &quot;title&quot;: &quot;Market opportunity&quot;,
+      &quot;purpose&quot;: &quot;Show the size of the opportunity, the most relevant subsegments and the demand drivers that will accelerate adoption.&quot;,
+      &quot;key_points&quot;: [
+        &quot;Total US fintech revenue &amp; service fees estimate: approx $350 billion (Research: market_overview).&quot;,
+        &quot;Relevant subsegments (Research estimates): Payments &amp; Merchant Services ~ $150B; BaaS &amp; Core Banking APIs ~ $80B; Digital Lending ~ $60B; Crypto &amp; Digital As…</pre></details></div><div class="decision">↳ Loop guard: maximum revisions reached, finalising</div>
+<h2>Feedback exchanged between agents</h2><table><tr><th>From</th><th>To</th><th>Issue</th><th>Request</th></tr><tr><td>funding_advisor</td><td>research_agent</td><td>The Funding Advisor needs more information to recommend well.</td><td>Which specific fintech subsegment is the founder targeting (payments, lending, wealthtech, crypto, BaaS)? | Current traction: MRR, number of customers/pilots, and runway (months)? | Legal and regulatory status: are you registered as an MSB, do you have any state money transmitter licenses, or custody arrangements in place? | Founding team composition and prior fintech/regulatory experience (helps match to accelerators/angels/VCs) | Target go-to-market route: direct to SMBs/consumers, embedded finance via platforms, or partnering with banks (this affects ideal pilot partners and investor fits) | Preferred trade-off between dilution and speed (willingness to take debt vs. equity) and acceptable investor involvement level (board seats, strategic introductions)</td></tr><tr><td>pitch_coach</td><td>research_agent</td><td>Market and business-model guidance lacks practical benchmarking for unit economics and GTM metrics per subsegment.</td><td>Provide benchmark KPI ranges (typical CAC, LTV, take-rate or yield, gross margin, and MRR brackets) and common pilot success metrics for each subsegment (Payments, Digital Lending, BaaS, Crypto) based on your domain knowledge so we can populate the Business Model and Market slides with realistic targets.</td></tr><tr><td>pitch_coach</td><td>funding_advisor</td><td>Funding guidance lists many suitable programs but does not prioritize them by subsegment or give typical equity/covenant expectations.</td><td>From your experience, prioritize the recommended programs (Plug and Play Fintech, Techstars Fintech, SBIR/STTR, Visa Everywhere Initiative, early-stage fintech VCs, angels, venture debt) for each subsegment and provide typical equity percentages/terms or selection criteria founders should expect at pre-seed for these options.</td></tr></table>
+<h2>Memory use</h2><p><b>Research Agent</b> (run 0) searched memory for <i>fintech US market trends, competitors, risks</i>: 0 of 0 notes used.</p><p class="muted">No past notes were available (cold start).</p><p><b>Funding Advisor</b> (run 0) searched memory for <i>fintech US funding grants accelerators investors</i>: 0 of 0 notes used.</p><p class="muted">No past notes were available (cold start).</p><p><b>Research Agent</b> (run 1) searched memory for <i>fintech US market trends, competitors, risks</i>: 0 of 0 notes used.</p><p class="muted">No past notes were available (cold start).</p><p><b>Funding Advisor</b> (run 1) searched memory for <i>fintech US funding grants accelerators investors</i>: 0 of 0 notes used.</p><p class="muted">No past notes were available (cold start).</p><p><b>Research Agent</b> (run 2) searched memory for <i>fintech US market trends, competitors, risks</i>: 0 of 0 notes used.</p><p class="muted">No past notes were available (cold start).</p><p><b>Funding Advisor</b> (run 2) searched memory for <i>fintech US funding grants accelerators investors</i>: 0 of 0 notes used.</p><p class="muted">No past notes were available (cold start).</p>
+<h2>Contribution per agent</h2>
+<table><tr><th>Agent</th><th>Runs</th><th>Model calls</th><th>Model time</th><th>Feedback sent</th>
+<th>Feedback received</th><th>Memory used / retrieved</th></tr><tr><td>Research Agent</td><td>3</td><td>3</td><td>0s</td><td>0</td><td>2</td><td>0 / 0</td></tr><tr><td>Funding Advisor</td><td>3</td><td>3</td><td>0s</td><td>0</td><td>1</td><td>0 / 0</td></tr><tr><td>Pitch Coach</td><td>2</td><td>2</td><td>0s</td><td>4</td><td>0</td><td>0 / 0</td></tr></table>
+</body></html>
